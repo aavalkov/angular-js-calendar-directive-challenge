@@ -1,8 +1,14 @@
 <nav>
-	<select>
-		<option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+	<select ng-model="selectedMonth" ng-change="newCalendar()">
+		<option ng-repeat="month in months" ng-selected="{{selectedMonth}} === $index" value="{{$index}}">{{month}}</option>
 	</select>
-	<select>
-		<option ng-repeat="year in years" value="year">{{year}}</option>
+	<select ng-model="selectedYear" ng-change="newCalendar()">
+		<option ng-repeat="year in years" ng-selected="{{selectedYear}} === {{year}}" value="{{year}}">{{year}}</option>
 	</select>
 </nav>
+
+<div ng-repeat="dayName in days" class="day-names">{{dayName}}</div>
+<div class="calendar-days">
+	<div ng-repeat="day in range.days" class="date">{{day.day}}</div>
+</div>
+	
